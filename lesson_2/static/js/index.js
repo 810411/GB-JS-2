@@ -9,9 +9,10 @@ function renderIndex() {
   const h1 = new DOM_Element('h1', ' ', 'center-align', 'Главная страница');
   h1.render(content);
 
-  let pContent = `Приложение написано в исключительно учебных целях, может содержать "deprecations" и прочие 
-  несовершенства. Задания: 1 - код приложения, 2 - меню страницы, 3 - "Галерея", 4 - "Обработчик"`;
-  const p = new DOM_Element('p', ' ', 'center-align flow-text', pContent);
+  let pContent = `☺ Приложение написано в исключительно учебных целях, может содержать "deprecations" и прочие 
+  несовершенства. Задания: 1 - код приложения, 2 - меню страницы, 3 - "Галерея", 4 - "Обработчик". Для работы приложения 
+  требуется установленная node.js, перейти в папку проекта, установить зависимости: npm install, запуск сервера: npm start`;
+  const p = new DOM_Element('p', ' ', 'flow-text', pContent);
   p.render(content);
 }
 
