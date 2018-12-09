@@ -4,7 +4,7 @@
     [
       {"tagName": "div", "id": "nav-wrapper", "className": "nav-wrapper"},
       [
-        {"tagName": "a", "id": "logo", "className": "brand-logo right", "content": "Зимаган", "href": "#"},
+        {"tagName": "a", "id": "logo", "className": "brand-logo right", "content": "Зимаган", "href": "http://127.0.0.1:3000/"},
         {"tagName": "ul", "id": "nav-mobile", "className": "left hide-on-med-and-down"},
         [
           {"tagName": "li", "id": "main"},
