@@ -60,7 +60,7 @@ function renderGallery() {
   function addImage(data) {
     const col = new DOM_Element('div', ' ', 'col s2');
     col.render(div);
-    const img = new DOM_Element('img', ' ', 'circle img', ' ', '#', data.src);
+    const img = new DOM_Element('img', ' ', 'img', ' ', '#', data.src);
     img.render(col);
     const link = document.getElementById(img.myId);
     link.onclick = () => {
@@ -88,9 +88,10 @@ function renderHandler() {
   const div = new DOM_Element('div', ' ', 'row center-align');
   div.render(content);
 
-  const a = new DOM_Element('a', ' ', 'waves-effect waves-light btn', 'Нажми меня');
+  const a = new DOM_Element('a', ' ', 'waves-effect waves-light btn-large', 'Нажми меня');
   a.render(div);
   const link = document.getElementById(a.myId);
+  link.classList.add('teal');
 
   let className;
 
@@ -101,15 +102,14 @@ function renderHandler() {
       })
       .then(result => {
         if (result.status === 200) {
-          className = 'green-text'
+          link.classList.replace('red', 'teal')
         } else {
-          className = 'red-text'
+          link.classList.replace('teal', 'red')
         }
         return result.json();
       })
       .then(result => {
-        const div = new DOM_Element('div', ' ', `row center-align ${className}`, JSON.stringify(result));
-        div.render(content);
+        link.textContent = `${result.result}, нажми снова`;
       })
       .catch(console.error);
   }
