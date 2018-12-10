@@ -6,67 +6,70 @@ const content = document.getElementById('content');
 function renderIndex() {
   content.innerHTML = '';
 
-  const h1 = new DOM_Element('h1', ' ', 'center-align', 'Главная страница');
+  const h1 = new DOM_Element({"tagName": "h1", "className": "center-align", "content": "Главная страница"});
   h1.render(content);
 
   let pContent = `☺ Приложение написано в исключительно учебных целях, может содержать "deprecations" и прочие 
   несовершенства. Задания: 1 - код приложения, 2 - меню страницы, 3 - "Галерея", 4 - "Обработчик". Для работы приложения 
   требуется установленная node.js, перейти в папку проекта, установить зависимости: npm install, запуск сервера: npm start`;
-  const p = new DOM_Element('p', ' ', 'flow-text', pContent);
+  const p = new DOM_Element({"tagName": "p", "className": "flow-text", "content": pContent});
   p.render(content);
 }
 
 function renderCatalog() {
   content.innerHTML = '';
 
-  const h1 = new DOM_Element('h1', ' ', 'center-align', 'Каталог');
+  const h1 = new DOM_Element({"tagName": "h1", "className": "center-align", "content": "Каталог"});
   h1.render(content);
 
   let pContent = `Здесь будет каталог, наверное...`;
-  const p = new DOM_Element('p', ' ', 'center-align', pContent);
+  const p = new DOM_Element({"tagName": "p", "className": "center-align", "content": pContent});
   p.render(content);
 }
 
 function renderContact() {
   content.innerHTML = '';
 
-  const h1 = new DOM_Element('h1', ' ', 'center-align', 'Контакты');
+  const h1 = new DOM_Element({"tagName": "h1", "className": "center-align", "content": "Контакты"});
   h1.render(content);
 
-  const div = new DOM_Element('div', ' ', 'row center-align');
+  const div = new DOM_Element({"tagName": "div", "className": "row center-align"});
   div.render(content);
 
   let pContent = `Facebook: Григорий Балабанов`;
-  const a = new DOM_Element('a', ' ', ' ', pContent, 'https://www.facebook.com/grigorii.balabanov');
+  const a = new DOM_Element({
+    "tagName": "a",
+    "content": pContent,
+    "href": "https://www.facebook.com/grigorii.balabanov"
+  });
   a.render(div);
 }
 
 function renderGallery() {
   content.innerHTML = '';
 
-  const h1 = new DOM_Element('h1', ' ', 'center-align', 'Галерея');
+  const h1 = new DOM_Element({"tagName": "h1", "className": "center-align", "content": "Галерея"});
   h1.render(content);
 
-  const div = new DOM_Element('div', ' ', 'row center-align');
+  const div = new DOM_Element({"tagName": "div", "className": "row center-align"});
   div.render(content);
 
-  const view = new DOM_Element('div', ' ', 'row center-align');
+  const view = new DOM_Element({"tagName": "div", "className": "row center-align"});
   view.render(content);
 
-  let dataHref = './img/acura.jpg';
-  const bigImg = new DOM_Element('img', ' ', 'bigImg', ' ', '#', dataHref);
+  const bigImg = new DOM_Element({"tagName": "img", "className": "bigImg", "src": "./img/acura.jpg"});
   bigImg.render(view);
 
   function addImage(data) {
-    const col = new DOM_Element('div', ' ', 'col s2');
+    const col = new DOM_Element({"tagName": "div", "className": "col s2"});
     col.render(div);
-    const img = new DOM_Element('img', ' ', 'img', ' ', '#', data.src);
+    const img = new DOM_Element({"tagName": "img", "className": "img", "src": data.src});
     img.render(col);
-    const link = document.getElementById(img.myId);
+    const link = document.getElementById(img.id);
     link.onclick = () => {
-      const viewContent = document.getElementById(view.myId);
+      const viewContent = document.getElementById(view.id);
       viewContent.innerHTML = '';
-      const bigImg = new DOM_Element('img', ' ', 'bigImg', ' ', '#', data.href);
+      const bigImg = new DOM_Element({"tagName": "img", "className": "bigImg", "src": data.href});
       bigImg.render(view);
     }
   }
@@ -82,15 +85,19 @@ function renderGallery() {
 function renderHandler() {
   content.innerHTML = '';
 
-  const h1 = new DOM_Element('h1', ' ', 'center-align', 'Обработчик');
+  const h1 = new DOM_Element({"tagName": "h1", "className": "center-align", "content": "Обработчик"});
   h1.render(content);
 
-  const div = new DOM_Element('div', ' ', 'row center-align');
+  const div = new DOM_Element({"tagName": "div", "className": "row center-align"});
   div.render(content);
 
-  const a = new DOM_Element('a', ' ', 'waves-effect waves-light btn-large', 'Нажми меня');
+  const a = new DOM_Element({
+    "tagName": "a",
+    "className": "waves-effect waves-light btn-large",
+    "content": "Нажми меня"
+  });
   a.render(div);
-  const link = document.getElementById(a.myId);
+  const link = document.getElementById(a.id);
   link.classList.add('teal');
 
   let className;
