@@ -1,0 +1,34 @@
+{
+  "menu": [
+    {"tagName": "nav", "id": "nav"},
+    [
+      {"tagName": "div", "id": "nav-wrapper", "className": "nav-wrapper"},
+      [
+        {"tagName": "a", "id": "logo", "className": "brand-logo right", "content": "Зимаган", "href": "http://127.0.0.1:3000/"},
+        {"tagName": "ul", "id": "nav-mobile", "className": "left hide-on-med-and-down"},
+        [
+          {"tagName": "li", "id": "main"},
+          [
+            {"tagName": "a", "id": "main-a", "className": " ", "content": "Главная", "href": "#"}
+          ],
+          {"tagName": "li", "id": "catalog"},
+          [
+            {"tagName": "a", "id": "catalog-a", "className": " ", "content": "Каталог", "href": "#"}
+          ],
+          {"tagName": "li", "id": "gallery"},
+          [
+            {"tagName": "a", "id": "gallery-a", "className": " ", "content": "Галерея", "href": "#"}
+          ],
+          {"tagName": "li", "id": "handler"},
+          [
+            {"tagName": "a", "id": "handler-a", "className": " ", "content": "Обработчик", "href": "#"}
+          ],
+          {"tagName": "li", "id": "contact"},
+          [
+            {"tagName": "a", "id": "contact-a", "className": " ", "content": "Контакты", "href": "#"}
+          ]
+        ]
+      ]
+    ]
+  ]
+}
