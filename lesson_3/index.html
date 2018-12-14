@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Урок 3. Домашнее задание </title>
+    <style>
+        .content {
+            margin: 0 auto;
+            width: 640px;
+        }
+
+        .warning {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <h2>Задания 1 и 2:</h2>
+    <textarea name="text" id="user-text" placeholder="Введите текст для замены одинарных кавычек на двойные"
+              cols="87" rows="4"></textarea>
+    <h4>Результат:</h4>
+    <p id="result"></p>
+    <hr>
+
+    <h2>Задание 3:</h2>
+    <form action="">
+        <fieldset>
+            <p><span>&#128566; </span><input type="text" id="name" name="name" placeholder="Введите имя">
+                <span class="warning"></span></p>
+            <p><span>&#128222; </span><input type="text" id="phone" placeholder="Введите телефон">
+                <span class="warning"></span></p>
+            <p><span>&#128231; </span><input type="text" id="email" placeholder="Введите email">
+                <span class="warning"></span></p>
+            <textarea name="text" id="message" placeholder="Введите сообщение"
+                      cols="83" rows="4"></textarea>
+            <input type="submit" id="submit" name="Отправить">
+        </fieldset>
+    </form>
+    <p id="notice"></p>
+</div>
+<script type="text/javascript">
+  // Задание 1, 2
+  const userText = document.getElementById('user-text');
+  const result1 = document.getElementById('result');
+
+  userText.addEventListener('input', () => {
+    result1.textContent = userText.value.replace(/\B'\b|'\B|\B`\b|`\B/g, '"');
+  });
+
+  // Задание 3
+  const submit = document.getElementById('submit');
+  const notice = document.getElementById('notice');
+  const name = document.getElementById('name');
+  const phone = document.getElementById('phone');
+  const email = document.getElementById('email');
+  const form = [name, phone, email];
+
+  name.rule = /^[a-z ]|[а-я ]{3,}$/i;
+  phone.rule = /^\+7\(\d{3}\)\d{3}-\d{4}$/;
+  email.rule = /^[\w]+[-|.]?[\w]+@[a-z]+\.[a-z]{2,4}$/i;
+
+  function clearEvent(event) {
+    event.currentTarget.style.outline = '';
+    event.currentTarget.nextElementSibling.textContent = '';
+    submit.disabled = false;
+    notice.textContent = '';
+  }
+
+  function warning(element) {
+    element.nextElementSibling.textContent = ' Hедопустимое значение';
+    element.style.outline = '2px solid red';
+  }
+
+  form.forEach(input => input.addEventListener('input', clearEvent));
+
+  submit.addEventListener('click', event => {
+    event.preventDefault();
+    let ok = true;
+
+    form.forEach(input => {
+      if (!input.rule.test(input.value)) {
+        warning(input);
+        ok = false;
+      }
+    });
+
+    if (!ok) {
+      submit.disabled = true;
+    } else {
+      notice.textContent = 'Сообщение отправлено!'
+    }
+  })
+</script>
+</body>
+</html>
