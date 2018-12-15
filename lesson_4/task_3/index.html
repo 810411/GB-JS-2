@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Форма обратной связи </title>
+    <style>
+        .content {
+            margin: 0 auto;
+            width: 640px;
+        }
+
+        .warning {
+            color: red;
+        }
+
+        .city {
+            padding-left: 20px;
+            list-style: none;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="content">
+    <h2> Форма обратной связи </h2>
+    <form action="">
+        <fieldset>
+            <p><span>&#128566; </span><input type="text" id="name" name="name" placeholder="Введите имя">
+                <span class="warning"></span></p>
+            <p><span>&#128222; </span><input type="text" id="phone" placeholder="Введите телефон">
+                <span class="warning"></span></p>
+            <p><span>&#128231; </span><input type="text" id="email" placeholder="Введите email">
+                <span class="warning"></span></p>
+            <p><span>&#127961; </span><input type="text" autocomplete="off" name="test" id="city"
+                                             placeholder="Введите город">
+                <span></span></p>
+            <textarea name="text" id="message" placeholder="Введите сообщение"
+                      cols="83" rows="4"></textarea>
+            <input type="submit" id="submit" name="Отправить">
+        </fieldset>
+    </form>
+    <p id="notice"></p>
+</div>
+<script type="text/javascript">
+  const
+    name = $('#name'),
+    phone = $('#phone'),
+    email = $('#email'),
+    cityList = $('#city'),
+    submit = $('#submit').get(0);
+
+  const
+    nameRule = /^[a-z ]|[а-я ]{3,}$/i,
+    phoneRule = /^\+7\(\d{3}\)\d{3}-\d{4}$/,
+    emailRule = /^[\w]+[-|.]?[\w]+@[a-z]+\.[a-z]{2,4}$/i;
+
+  $('form').submit(() => {
+    let ok = true;
+    event.preventDefault();
+
+    if (!nameRule.test(name.val())) {
+      name.css('outline', '2px solid red');
+      name.next('span').text('может содержать только буквы');
+      ok = false;
+    }
+    if (!phoneRule.test(phone.val())) {
+      phone.css('outline', '2px solid red');
+      phone.next('span').text('не соответствует шаблону +7(000)000-0000');
+      ok = false;
+    }
+    if (!emailRule.test(email.val())) {
+      email.css('outline', '2px solid red');
+      email.next('span').text('невалидный email');
+      ok = false;
+    }
+    if (!ok) {
+      submit.disabled = true;
+    } else {
+      $('#notice').text('Сообщение отправлено!');
+    }
+  });
+
+  $('input').focus(() => {
+    let input = $(event.target);
+    input.css('outline', 'none');
+    input.next('span').text('');
+    submit.disabled = false;
+  });
+
+  cityList.bind("change paste keyup", () => {
+    let userInput = cityList.val();
+
+    cityList.next('span').empty();
+
+    if (userInput.length >= 3) {
+      $.ajax({
+        url: `https://api.vk.com/method/database.getCities?access_token=ed1271af9e8883f7a7c2cefbfddfcbc61563029666c487b2f71a5227cce0d1b533c4af4c5b888633c06ae&country_id=1&need_all=1&v=5.92&q=${userInput}`,
+        type: 'post',
+        crossDomain: true,
+        dataType: 'jsonp',
+      })
+        .done(data => {
+          if (data.response) {
+            const cities = [];
+            data.response.items.forEach(city => cities.push(city.title));
+            const citiesSet = new Set(cities);
+
+            citiesSet.forEach(city => {
+              const item = $(`<li class="city">${city}</li>`);
+
+              item.click(event => {
+                event.preventDefault();
+                cityList.val($(event.target).text());
+                cityList.next('span').empty();
+              });
+
+              cityList.next('span').append(item);
+
+              cityList.blur();
+            });
+          } else {
+            console.error('Ошибка получения списка городов');
+          }
+        });
+    }
+  });
+</script>
+</body>
+</html>
