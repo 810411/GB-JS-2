@@ -1,0 +1,109 @@
+body {
+    max-width: 960px;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: inherit;
+    margin: 20px auto;
+    padding: 4px;
+}
+
+nav {
+    width: inherit;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+li {
+    display: inline-block;
+    list-style: none;
+    width: 24%;
+    height: 100%;
+    margin: 4px 1px;
+    padding: 20px 0;
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    user-select: none;
+}
+
+li:first-child {
+    margin-left: 0;
+    border-top-left-radius: 20px;
+}
+
+li:last-child {
+    margin-right: 0;
+    border-top-right-radius: 20px;
+}
+
+li.selected {
+    box-shadow: 0 0 60px rgba(67, 67, 67, 0.7) inset;
+}
+
+li:not(.selected) {
+    cursor: pointer;
+}
+
+li:not(.selected):hover,
+li:not(.selected):focus {
+    transform: scale(1.02);
+}
+
+li:not(.selected):active {
+    transform: scale(0.99);
+    box-shadow: none;
+}
+
+article {
+    margin: 2px;
+    padding: 40px;
+    text-align: justify;
+    font-weight: lighter;
+    font-size: 1.5em;
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+article:not(.selected) {
+    display: none;
+}
+
+.jquery {
+    background-color: #0769ad;
+    text-shadow: #06568e 2px 2px 0, #06568e -2px -2px 0,
+    #06568e -2px 2px 0, #06568e 2px -2px 0;
+    border: 2px solid #7acef4;
+}
+
+.polymer {
+    background-color: #ff4470;
+    text-shadow: #f97d9a 2px 2px 0, #f97d9a -2px -2px 0,
+    #f97d9a -2px 2px 0, #f97d9a 2px -2px 0;
+    border: 2px solid #1e88e5;
+}
+
+.angular {
+    background-color: #1976d2;
+    text-shadow: #c3002f 2px 2px 0, #c3002f -2px -2px 0,
+    #c3002f -2px 2px 0, #c3002f 2px -2px 0;
+    border: 2px solid #dd0031;
+}
+
+.vue {
+    background-color: #727f80;
+    text-shadow: #35495e 2px 2px 0, #35495e -2px -2px 0,
+    #35495e -2px 2px 0, #35495e 2px -2px 0;
+    border: 2px solid #41b883;
+}
