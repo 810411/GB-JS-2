@@ -131,8 +131,8 @@ $(document).ready(() => {
 
   $('#datepicker').datepicker();
 
-  let tooltips = $('[title]').tooltip({
-    track: true
+  $('[title]').tooltip({
+    position: { at: "center bottom" }
   });
 
   $('#warning').dialog({

@@ -52,6 +52,9 @@ $(document).ready(() => {
       let img = $(ui.helper[0]).clone();
 
       img.removeAttr('style');
+      img.css('cursor', 'pointer');
+      img.tooltip();
+      img.get(0).title = 'Для удаления клините изображение';
       col.append(img);
       $(this).find('h4').find('span').text(++choosen);
       $(this).find('.row').append(col);
