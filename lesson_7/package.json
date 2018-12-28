@@ -1,0 +1,33 @@
+{
+  "name": "lesson_7",
+  "version": "1.0.0",
+  "description": "Lesson 7",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/810411/GB-JS-2.git"
+  },
+  "author": "Grigorii Balabanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/810411/GB-JS-2/issues"
+  },
+  "homepage": "https://github.com/810411/GB-JS-2#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-if": "^2.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "gulp-useref": "^3.1.6"
+  },
+  "dependencies": {
+    "gulp-minify-css": "^1.2.4"
+  }
+}
